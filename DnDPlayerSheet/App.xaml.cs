@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -6,9 +7,11 @@ namespace DnDPlayerSheet
 {
     public partial class App : Application
     {
+        
         public App()
         {
             InitializeComponent();
+            // Database setup
 
             MainPage = new Main();
         }

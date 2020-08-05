@@ -1,0 +1,90 @@
+﻿@model DnDPlayerSheet.Models.Spell
+
+@{
+    ViewData["Title"] = "Nowe zaklęcie";
+}
+
+<h1>Nowe</h1>
+
+<h4>Zaklęcie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="School" class="control-label"></label>
+                <select asp-for="School" class="form-control"></select>
+                <span asp-validation-for="School" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tier" class="control-label"></label>
+                <input asp-for="Tier" class="form-control" />
+                <span asp-validation-for="Tier" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Level" class="control-label"></label>
+                <input asp-for="Level" class="form-control" />
+                <span asp-validation-for="Level" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Components" class="control-label"></label>
+                <input asp-for="Components" class="form-control" />
+                <span asp-validation-for="Components" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CastTime" class="control-label"></label>
+                <input asp-for="CastTime" class="form-control" />
+                <span asp-validation-for="CastTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Range" class="control-label"></label>
+                <input asp-for="Range" class="form-control" />
+                <span asp-validation-for="Range" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Target" class="control-label"></label>
+                @Html.EditorFor(m => m.Target, new { htmlAttributes = new { @class = "form-control" } })
+                <span asp-validation-for="Target" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Duration" class="control-label"></label>
+                <input asp-for="Duration" class="form-control" />
+                <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SavingThrow" class="control-label"></label>
+                <input asp-for="SavingThrow" class="form-control" />
+                <span asp-validation-for="SavingThrow" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpellResistance" class="control-label"></label>
+                <input asp-for="SpellResistance" class="form-control" />
+                <span asp-validation-for="SpellResistance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                @Html.EditorFor(m => m.Description, new { htmlAttributes = new { @class = "form-control" } })
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaterialComponent" class="control-label"></label>
+                @Html.EditorFor(m => m.MaterialComponent, new { htmlAttributes = new { @class = "form-control" } })
+                <span asp-validation-for="MaterialComponent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDPlayerSheet.Android", "DnDPlayerSheet.Android\DnDPlayerSheet.Android.csproj", "{5F6BACF0-6580-44A5-B93A-372A5D1ACAE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDPlayerSheet", "DnDPlayerSheet\DnDPlayerSheet.csproj", "{FA0FC3DC-4581-4188-ABC8-FF14E9ABD7A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DnDPlayerSheet", "DnDPlayerSheet\DnDPlayerSheet.csproj", "{FA0FC3DC-4581-4188-ABC8-FF14E9ABD7A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHelper", "WebHelper\WebHelper.csproj", "{C40FC277-C690-4858-8059-87B1A2C16309}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDLibrary", "DnDLibrary\DnDLibrary.csproj", "{90E21810-4FF4-4AE4-A086-E836E048B8E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +27,14 @@ Global
 		{FA0FC3DC-4581-4188-ABC8-FF14E9ABD7A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA0FC3DC-4581-4188-ABC8-FF14E9ABD7A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA0FC3DC-4581-4188-ABC8-FF14E9ABD7A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C40FC277-C690-4858-8059-87B1A2C16309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C40FC277-C690-4858-8059-87B1A2C16309}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C40FC277-C690-4858-8059-87B1A2C16309}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C40FC277-C690-4858-8059-87B1A2C16309}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90E21810-4FF4-4AE4-A086-E836E048B8E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90E21810-4FF4-4AE4-A086-E836E048B8E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90E21810-4FF4-4AE4-A086-E836E048B8E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90E21810-4FF4-4AE4-A086-E836E048B8E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
