@@ -4,12 +4,53 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:DnDPlayerSheet"
+             xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material" 
+             xmlns:behaviors="clr-namespace:DnDPlayerSheet.Behaviors"
              x:Class="DnDPlayerSheet.Pages.OverviewPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        
+        <ScrollView>
+            <StackLayout BindingContext="{x:Static local:App.PlayerController}">
+                <material:MaterialCard CornerRadius="2" Elevation="1" HeightRequest="500" HorizontalOptions="FillAndExpand">
+                    <StackLayout Margin="5,5,5,5">
+                        <Grid BindingContext="{Binding SelectedCharacter, Mode=OneWay}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="15"/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" FontSize="Small" Margin="5,0,0,0">Imię</Label>
+                            <Entry x:Name="CharacterName" IsReadOnly="True" Text="{Binding Name}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"/>
+                            <material:MaterialButton x:Name="EditModeButton" Grid.Column="3" Grid.RowSpan="2" Grid.Row="0" ButtonType="Elevated" Text="{x:Static local:IconFont.Pencil}" FontFamily="{DynamicResource MaterialFontFamily}" Clicked="MaterialButton_Clicked"/>
+                            <ListView ItemsSource="{Binding Classes}" Grid.Column="0" Grid.Row="2" SelectionMode="None">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Picker ItemsSource="{Binding Roles}"  SelectedIndex="{Binding Class}"/>
+                                                <Entry IsReadOnly="True" Text="{Binding Level}"/>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </StackLayout>
+                </material:MaterialCard>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -5,11 +5,34 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-             android:TabbedPage.ToolbarPlacement="Bottom"          
+             android:TabbedPage.ToolbarPlacement="Bottom"
+             xmlns:views="clr-namespace:DnDPlayerSheet.Pages"            
+             xmlns:local="clr-namespace:DnDPlayerSheet"
              x:Class="DnDPlayerSheet.Main">
-  <!--Pages can be added as references or inline-->
-    <ContentPage Title="Przegląd" />
-    <ContentPage Title="Atrybuty" />
-    <ContentPage Title="Zaklęcia" />
-    <ContentPage Title="Mechaniki" />
+
+    <views:OverviewPage Title="Przegląd">
+        <views:OverviewPage.IconImageSource>
+            <FontImageSource FontFamily="{DynamicResource MaterialFontFamily}" Glyph="{x:Static local:IconFont.Account}" Size="56" />
+        </views:OverviewPage.IconImageSource>
+    </views:OverviewPage>
+    <views:AttributesPage Title="Atrybuty">
+        <views:AttributesPage.IconImageSource>
+            <FontImageSource FontFamily="{DynamicResource MaterialFontFamily}" Glyph="{x:Static local:IconFont.ArmFlex}" Size="56" />
+        </views:AttributesPage.IconImageSource>
+    </views:AttributesPage>
+    <views:SpellsPage Title="Zaklęcia">
+        <views:SpellsPage.IconImageSource>
+            <FontImageSource FontFamily="{DynamicResource MaterialFontFamily}" Glyph="{x:Static local:IconFont.Script}" Size="56" />
+        </views:SpellsPage.IconImageSource>
+    </views:SpellsPage>
+    <views:MechanicsPage Title="Mechaniki">
+        <views:MechanicsPage.IconImageSource>
+            <FontImageSource FontFamily="{DynamicResource MaterialFontFamily}" Glyph="{x:Static local:IconFont.Toolbox}" Size="56" />
+        </views:MechanicsPage.IconImageSource>
+    </views:MechanicsPage>
+    <views:SettingsPage Title="Ustawienia">
+        <views:SettingsPage.IconImageSource>
+            <FontImageSource FontFamily="{DynamicResource MaterialFontFamily}" Glyph="{x:Static local:IconFont.Cog}" Size="56" />
+        </views:SettingsPage.IconImageSource>
+    </views:SettingsPage>
 </TabbedPage>

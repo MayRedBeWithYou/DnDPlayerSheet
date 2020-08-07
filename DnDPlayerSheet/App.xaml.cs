@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DnDPlayerSheet.Controllers;
+using System;
 using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -7,11 +8,12 @@ namespace DnDPlayerSheet
 {
     public partial class App : Application
     {
-        
+        public static PlayerController PlayerController { get; } = new PlayerController();
+
         public App()
         {
             InitializeComponent();
-            // Database setup
+            XF.Material.Forms.Material.Init(this);
 
             MainPage = new Main();
         }

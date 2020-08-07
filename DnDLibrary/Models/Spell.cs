@@ -27,33 +27,6 @@ namespace DnDPlayerSheet.Models
         Universal
     }
 
-    public enum Role
-    {
-
-        [Display(Name = "Barbarzyńca")]
-        Barbarian,
-        [Display(Name = "Bard")]
-        Bard,
-        [Display(Name = "Kapłan")]
-        Cleric,
-        [Display(Name = "Druid")]
-        Druid,
-        [Display(Name = "Wojownik")]
-        Fighter,
-        [Display(Name = "Mnich")]
-        Monk,
-        [Display(Name = "Paladyn")]
-        Paladin,
-        [Display(Name = "Tropiciel")]
-        Ranger,
-        [Display(Name = "Łotrzyk")]
-        Rogue,
-        [Display(Name = "Zaklinacz")]
-        Sorcerer,
-        [Display(Name = "Czarodziej")]
-        Wizard
-    }
-
     public class Spell
     {
         [Key]
