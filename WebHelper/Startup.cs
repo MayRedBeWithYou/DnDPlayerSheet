@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using WebHelper.EntityFramework;
+using System.Configuration;
 
 namespace WebHelper
 {
@@ -27,8 +28,12 @@ namespace WebHelper
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            string connection;
+            if (ConfigurationManager.ConnectionStrings["DatabaseConnection"] != null)
+                connection = ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString;
+            else
+                connection = Configuration.GetConnectionString("DatabaseConnection");
 
-            var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
 
         }
