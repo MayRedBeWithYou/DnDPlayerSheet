@@ -9,34 +9,6 @@ using System.Text;
 
 namespace DnDLibrary.Models
 {
-    public class EnumDisplayNameConverter : EnumConverter
-    {
-        public EnumDisplayNameConverter(Type type)
-            : base(type)
-        {
-        }
-        public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
-        {
-            if (destinationType == typeof(string))
-            {
-                if (value != null)
-                {
-                    FieldInfo fi = value.GetType().GetField(value.ToString());
-                    if (fi != null)
-                    {
-                        var attributes = (DisplayAttribute[])fi.GetCustomAttributes(typeof(DisplayAttribute), false);
-                        return ((attributes.Length > 0) && (!String.IsNullOrEmpty(attributes[0].Name))) ? attributes[0].Name : value.ToString();
-                    }
-                }
-
-                return string.Empty;
-            }
-
-            return base.ConvertTo(context, culture, value, destinationType);
-        }
-    }
-
-    [TypeConverter(typeof(EnumDisplayNameConverter))]
     public enum Role
     {
         [Display(Name = "Barbarzyńca")]
@@ -63,7 +35,6 @@ namespace DnDLibrary.Models
         Wizard
     }
 
-    [TypeConverter(typeof(EnumDisplayNameConverter))]
     public enum Alignment
     {
         [Display(Name = "Praworządny dobry")]
@@ -121,7 +92,7 @@ namespace DnDLibrary.Models
 
         public int Constitution { get; set; }
 
-        public int Inteligence { get; set; }
+        public int Intelligence { get; set; }
 
         public int Wisdom { get; set; }
 

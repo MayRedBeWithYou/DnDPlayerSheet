@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:local="clr-namespace:DnDPlayerSheet.Pages"
+             xmlns:local="clr-namespace:DnDPlayerSheet"
+             xmlns:xaml="clr-namespace:DnDPlayerSheet.XamlExtensions"
              mc:Ignorable="d"
              x:Class="DnDPlayerSheet.App">
     <Application.Resources>
@@ -12,6 +13,7 @@
             <On Platform="Android" Value="materialdesignicons-webfont.ttf#Material Design Icons" />
             <On Platform="UWP" Value="Assets/Fonts/materialdesignicons-webfont.ttf#Material Design Icons" />
         </OnPlatform>
-        <local:EnumConverter x:Key="EnumConverter" />
+        <xaml:EnumToStringConverter x:Key="EnumToStringConverter" />
+        <xaml:AttributeToModifierConverter x:Key="AttributeToModifierConverter" />
     </Application.Resources>
 </Application>

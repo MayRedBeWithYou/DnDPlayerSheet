@@ -25,18 +25,33 @@ namespace DnDPlayerSheet.Controllers
             string[] files = Directory.GetFiles(charactersPath);
             foreach (string file in files)
             {
-                Character character = JsonConvert.DeserializeObject<Character>(File.ReadAllText(file));
+                File.Delete(file);
+                //Character character = JsonConvert.DeserializeObject<Character>(File.ReadAllText(file));
                 //Characters.Add(character);
             }
 
-            if (true || Characters.Count == 0)
+            Character startCharacter = new Character()
             {
-                Character startCharacter = new Character() { Name = "Postać" };
-                startCharacter.Classes = new List<ClassLevel>() { new ClassLevel() { Class = Role.Sorcerer, Level = 4 } };
-                startCharacter.SaveToFile();
-                Characters.Add(startCharacter);
-            }
-            SelectedCharacter = Characters[0];
+                Name = "Arius",
+                Alignment = Alignment.ChaoticNeutral,
+                MaxPW = 10,
+                CurrentPW = 7,
+                Race = "Tiefling",
+                KP = 12,
+                Speed = 9,
+                Touch = 12,
+                Unprepared = 10,
+                Strength = 8,
+                Dexterity = 12,
+                Constitution = 12,
+                Intelligence = 14,
+                Wisdom = 12,
+                Charisma = 18
+            };
+            startCharacter.Classes = new List<ClassLevel>() { new ClassLevel() { Class = Role.Sorcerer, Level = 2 } };
+            startCharacter.SaveToFile();
+            Characters.Add(startCharacter);
+            SelectedCharacter = startCharacter;
 
             files = Directory.GetFiles(familiarPath);
             foreach (string file in files)

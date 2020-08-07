@@ -5,7 +5,7 @@ using System.Threading;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace DnDPlayerSheet.Behaviors
+namespace DnDPlayerSheet.XamlExtensions
 {
     public class LongPressBehavior : Behavior<Button>
     {
