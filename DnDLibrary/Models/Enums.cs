@@ -1,4 +1,6 @@
 ﻿using DnDPlayerSheet.Models;
+using Newtonsoft.Json;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +11,32 @@ using System.Text;
 
 namespace DnDLibrary.Models
 {
+    public static class Conversion
+    {
+        public static string RoleShort(Role role)
+        {
+            switch (role)
+            {
+                case Role.Barbarian:
+                    return "Brb";
+                case Role.Bard:
+                    return "Brd";
+                case Role.Cleric:
+                    return "Kap";
+                case Role.Druid:
+                    return "Drd";
+                case Role.Paladin:
+                    return "Pal";
+                case Role.Ranger:
+                    return "Trp";
+                case Role.Sorcerer:
+                case Role.Wizard:
+                    return "Cza/Zak";
+            }
+            return "";
+        }
+    }
+
     public enum Role
     {
         [Display(Name = "Barbarzyńca")]
@@ -55,47 +83,5 @@ namespace DnDLibrary.Models
         NeutralEvil,
         [Display(Name = "Chaotyczny zły")]
         ChaoticEvil,
-    }
-
-    public struct ClassLevel
-    {
-        public Role Class { get; set; }
-
-        public int Level { get; set; }
-    }
-
-    public class Character
-    {
-        public string Name { get; set; }
-
-        public List<ClassLevel> Classes { get; set; }
-
-        public Alignment Alignment { get; set; }
-
-        public int MaxPW { get; set; }
-
-        public int CurrentPW { get; set; }
-
-        public int KP { get; set; }
-
-        public int Touch { get; set; }
-
-        public int Unprepared { get; set; }
-
-        public int Speed { get; set; }
-
-        public string Race { get; set; }
-
-        public int Strength { get; set; }
-
-        public int Dexterity { get; set; }
-
-        public int Constitution { get; set; }
-
-        public int Intelligence { get; set; }
-
-        public int Wisdom { get; set; }
-
-        public int Charisma { get; set; }
     }
 }

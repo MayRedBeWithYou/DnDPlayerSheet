@@ -54,7 +54,7 @@ namespace WebHelper.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Type,Requirements,Description")] Feat feat)
+        public async Task<IActionResult> Create([Bind("Id,Name,Type,Requirements,Description,SpecialRules")] Feat feat)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace WebHelper.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Type,Requirements,Description")] Feat feat)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Type,Requirements,Description,SpecialRules")] Feat feat)
         {
             if (id != feat.Id)
             {

@@ -13,8 +13,8 @@
             <StackLayout>
                 <StackLayout BindingContext="{x:Static local:App.PlayerController}">
                     <material:MaterialCard CornerRadius="2" Elevation="1" HorizontalOptions="FillAndExpand">
-                        <StackLayout Margin="5,5,5,5">
-                            <Grid BindingContext="{Binding SelectedCharacter, Mode=OneWay}" HorizontalOptions="Center">
+                        <StackLayout Margin="5,5,5,5" BindingContext="{Binding SelectedCharacter, Mode=OneWay}">
+                            <Grid HorizontalOptions="Center">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="20"/>
                                     <RowDefinition Height="40"/>
@@ -22,19 +22,24 @@
                                     <RowDefinition Height="50"/>
                                     <RowDefinition Height="20"/>
                                     <RowDefinition Height="40"/>
+                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="20"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
                                 </Grid.ColumnDefinitions>
 
                                 <Label Grid.Row="0" Grid.Column="0" FontSize="Small">Imię</Label>
-                                <Label FontSize="Title" Text="{Binding Name}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"/>
-                                <material:MaterialButton Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" ButtonType="Elevated" Text="{x:Static local:IconFont.Pencil}" FontFamily="{DynamicResource MaterialFontFamily}" Clicked="MaterialButton_Clicked"/>
-                                <Label Text="Klasa" Grid.Row="2"/>
-                                <StackLayout Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" VerticalOptions="StartAndExpand" IsClippedToBounds="False" Visual="Default" >
+                                <Label FontSize="Title" Text="{Binding Name}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3"/>
+                                <material:MaterialButton Grid.Column="5" Grid.Row="1" Grid.RowSpan="1" Grid.ColumnSpan="1" ButtonType="Elevated" Text="{x:Static local:IconFont.Pencil}" FontFamily="{DynamicResource MaterialFontFamily}" Clicked="MaterialButton_Clicked"/>
+                                <Label Text="Klasa" Grid.Row="2" Grid.ColumnSpan="3"/>
+                                <StackLayout Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" VerticalOptions="StartAndExpand" IsClippedToBounds="False" Visual="Default" >
                                     <ListView ItemsSource="{Binding Classes}" SelectionMode="None" VerticalOptions="StartAndExpand" HasUnevenRows="False" IsPullToRefreshEnabled="False" MinimumHeightRequest="40">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
@@ -48,22 +53,29 @@
                                         </ListView.ItemTemplate>
                                     </ListView>
                                 </StackLayout>
-                                <Label Text="Charakter" Grid.Column="2" Grid.Row="2"/>
-                                <Label FontSize="Large" Text="{Binding Alignment, Converter={StaticResource EnumToStringConverter}}" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"/>
-                                <Label Text="Rasa" Grid.Column="0" Grid.Row="4"/>
-                                <Label FontSize="Large" Text="{Binding Race}" Grid.Column="0" Grid.Row="5"/>
-                                <Label Text="PW" Grid.Column="2" Grid.Row="4"/>
-                                <Stepper Value="{Binding CurrentPW, Mode=TwoWay}" Minimum="-10" Maximum="{Binding MaxPW}" Increment="1" Grid.Column="3" Grid.Row="4" Grid.RowSpan="2" Visual="Material" Grid.ColumnSpan="1"  ValueChanged="CurrentPWChanged" VerticalOptions="Center"/>
-                                <StackLayout Orientation="Horizontal" Grid.Row="5" Grid.Column="2">
-                                    <Label x:Name="CurrentPWLabel" FontSize="Large" Text="{Binding CurrentPW, StringFormat='{0} /'}"/>
-                                    <Label FontSize="Large" Text="{Binding MaxPW}"/>
+                                <Label Text="Charakter" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="3"/>
+                                <Label FontSize="Large" Text="{Binding Alignment, Converter={StaticResource EnumToStringConverter}}" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="3"/>
+                                <Label Text="Rasa" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3"/>
+                                <Label FontSize="Large" Text="{Binding Race}" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3"/>
+                                <Label Text="PW" Grid.Column="3" Grid.Row="4"/>
+                                <Stepper Margin="10,0,0,0" Value="{Binding CurrentPW, Mode=TwoWay}" Minimum="-10" Maximum="{Binding MaxPW}" Increment="1" Grid.Column="4" Grid.Row="4" Grid.RowSpan="2" Visual="Material" Grid.ColumnSpan="2"  ValueChanged="CurrentPWChanged" VerticalOptions="Center" />
+                                <StackLayout Margin="0,0,-10,0" Orientation="Horizontal" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="1">
+                                    <Label x:Name="CurrentPWLabel" FontSize="Large" Text="{Binding CurrentPW}" TextColor="{Binding CurrentPW, Converter={StaticResource NegativeColoringConverter}, Mode=OneWay}"/>
+                                    <Label FontSize="Large" Text="{Binding MaxPW, StringFormat='/ {0}'}"/>
                                 </StackLayout>
-
+                                <Label Text="KP" Grid.Column="0" Grid.Row="6"/>
+                                <Label FontSize="Large" Text="{Binding KP}" Grid.Column="0" Grid.Row="7"/>
+                                <Label Text="Dotyk" Grid.Column="2" Grid.Row="6"/>
+                                <Label FontSize="Large" Text="{Binding Touch}" Grid.Column="2" Grid.Row="7"/>
+                                <Label Text="Nieprzygotowany" Grid.Column="4" Grid.Row="6" Grid.ColumnSpan="2"/>
+                                <Label FontSize="Large" Text="{Binding Unprepared}" Grid.Column="4" Grid.Row="7"/>
+                                <Label Text="Notatki" Grid.Row="8"/>
                             </Grid>
+                            <Editor AutoSize="TextChanges" TextChanged="Editor_TextChanged" Keyboard="Text" Text="{Binding MainNotes, Mode=TwoWay}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
                         </StackLayout>
                     </material:MaterialCard>
                     <material:MaterialCard>
-                        <StackLayout Margin="5,5,5,5" BindingContext="{Binding SelectedCharacter, Mode=OneWay}" >
+                        <StackLayout Margin="5,5,5,5" BindingContext="{Binding SelectedCharacter, Mode=OneWay}" Orientation="Horizontal" >
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="20"/>
@@ -77,7 +89,9 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="62"/>
                                     <ColumnDefinition Width="56"/>
-                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="78"/>
+                                    <ColumnDefinition Width="56"/>
+                                    <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
                                 <Label Text="Statystyki" />
                                 <StackLayout Grid.Row="1">
@@ -105,19 +119,33 @@
                                     <Label FontSize="Micro" Text="Charyzma" HorizontalOptions="Center"/>
                                 </StackLayout>
                                 <Label Grid.Row="0" Grid.Column="1" Text="Wartość"/>
-                                <Label Grid.Row="1" Grid.Column="1" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Strength}"/>
-                                <Label Grid.Row="2" Grid.Column="1" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Dexterity}"/>
-                                <Label Grid.Row="3" Grid.Column="1" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Constitution}"/>
-                                <Label Grid.Row="4" Grid.Column="1" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Intelligence}"/>
-                                <Label Grid.Row="5" Grid.Column="1" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Wisdom}"/>
-                                <Label Grid.Row="6" Grid.Column="1" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Charisma}"/>
+                                <Label Margin="0,-10,0,0" Grid.Row="1" Grid.Column="1" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Strength}"/>
+                                <Label Margin="0,-10,0,0" Grid.Row="2" Grid.Column="1" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Dexterity}"/>
+                                <Label Margin="0,-10,0,0" Grid.Row="3" Grid.Column="1" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Constitution}"/>
+                                <Label Margin="0,-10,0,0" Grid.Row="4" Grid.Column="1" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Intelligence}"/>
+                                <Label Margin="0,-10,0,0" Grid.Row="5" Grid.Column="1" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Wisdom}"/>
+                                <Label Margin="0,-10,0,0" Grid.Row="6" Grid.Column="1" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Charisma}"/>
                                 <Label Grid.Row="0" Grid.Column="2" Text="Modyfikator"/>
-                                <Label Grid.Row="1" Grid.Column="2" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Strength, Converter={StaticResource AttributeToModifierConverter}}"/>
-                                <Label Grid.Row="2" Grid.Column="2" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Dexterity, Converter={StaticResource AttributeToModifierConverter}}"/>
-                                <Label Grid.Row="3" Grid.Column="2" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Constitution, Converter={StaticResource AttributeToModifierConverter}}"/>
-                                <Label Grid.Row="4" Grid.Column="2" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Intelligence, Converter={StaticResource AttributeToModifierConverter}}"/>
-                                <Label Grid.Row="5" Grid.Column="2" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Wisdom, Converter={StaticResource AttributeToModifierConverter}}"/>
-                                <Label Grid.Row="6" Grid.Column="2" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Charisma, Converter={StaticResource AttributeToModifierConverter}}"/>
+                                <Label Margin="0,-10,0,0" Grid.Row="1" Grid.Column="2" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Strength, Converter={StaticResource AttributeToModifierConverter}}"/>
+                                <Label Margin="0,-10,0,0" Grid.Row="2" Grid.Column="2" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Dexterity, Converter={StaticResource AttributeToModifierConverter}}"/>
+                                <Label Margin="0,-10,0,0" Grid.Row="3" Grid.Column="2" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Constitution, Converter={StaticResource AttributeToModifierConverter}}"/>
+                                <Label Margin="0,-10,0,0" Grid.Row="4" Grid.Column="2" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Intelligence, Converter={StaticResource AttributeToModifierConverter}}"/>
+                                <Label Margin="0,-10,0,0" Grid.Row="5" Grid.Column="2" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Wisdom, Converter={StaticResource AttributeToModifierConverter}}"/>
+                                <Label Margin="0,-10,0,0" Grid.Row="6" Grid.Column="2" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Charisma, Converter={StaticResource AttributeToModifierConverter}}"/>
+                                <Label Grid.Row="0" Grid.Column="3" HorizontalOptions="Center" Text="Tymczasowe" Grid.ColumnSpan="2"/>
+                                <Label x:Name="TempStr" Margin="0,-10,0,0" Grid.Row="1" Grid.Column="3" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding TempStr, Mode=TwoWay}" TextColor="{Binding TempStr, Converter={StaticResource PositiveNegativeColoringConverter}, Mode=OneWay}"/>
+                                <Label x:Name="TempDex" Margin="0,-10,0,0" Grid.Row="2" Grid.Column="3" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding TempDex, Mode=TwoWay}" TextColor="{Binding TempDex, Converter={StaticResource PositiveNegativeColoringConverter}, Mode=OneWay}"/>
+                                <Label x:Name="TempCon" Margin="0,-10,0,0" Grid.Row="3" Grid.Column="3" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding TempCon, Mode=TwoWay}" TextColor="{Binding TempCon, Converter={StaticResource PositiveNegativeColoringConverter}, Mode=OneWay}"/>
+                                <Label x:Name="TempInt" Margin="0,-10,0,0" Grid.Row="4" Grid.Column="3" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding TempInt, Mode=TwoWay}" TextColor="{Binding TempInt, Converter={StaticResource PositiveNegativeColoringConverter}, Mode=OneWay}"/>
+                                <Label x:Name="TempWis" Margin="0,-10,0,0" Grid.Row="5" Grid.Column="3" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding TempWis, Mode=TwoWay}" TextColor="{Binding TempWis, Converter={StaticResource PositiveNegativeColoringConverter}, Mode=OneWay}"/>
+                                <Label x:Name="TempCha" Margin="0,-10,0,0" Grid.Row="6" Grid.Column="3" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding TempCha, Mode=TwoWay}" TextColor="{Binding TempCha, Converter={StaticResource PositiveNegativeColoringConverter}, Mode=OneWay}"/>
+                                <Stepper Margin="-5,-10,0,0" Value="{Binding TempStr, Mode=TwoWay}" Minimum="-50" Maximum="50" Increment="1" Grid.Column="4" Grid.Row="1" Visual="Material" VerticalOptions="Center" ValueChanged="SaveChanges"/>
+                                <Stepper Margin="-5,-10,0,0" Value="{Binding TempDex, Mode=TwoWay}" Minimum="-50" Maximum="50" Increment="1" Grid.Column="4" Grid.Row="2" Visual="Material" VerticalOptions="Center" ValueChanged="SaveChanges"/>
+                                <Stepper Margin="-5,-10,0,0" Value="{Binding TempCon, Mode=TwoWay}" Minimum="-50" Maximum="50" Increment="1" Grid.Column="4" Grid.Row="3" Visual="Material" VerticalOptions="Center" ValueChanged="SaveChanges"/>
+                                <Stepper Margin="-5,-10,0,0" Value="{Binding TempInt, Mode=TwoWay}" Minimum="-50" Maximum="50" Increment="1" Grid.Column="4" Grid.Row="4" Visual="Material" VerticalOptions="Center" ValueChanged="SaveChanges"/>
+                                <Stepper Margin="-5,-10,0,0" Value="{Binding TempWis, Mode=TwoWay}" Minimum="-50" Maximum="50" Increment="1" Grid.Column="4" Grid.Row="5" Visual="Material" VerticalOptions="Center" ValueChanged="SaveChanges"/>
+                                <Stepper Margin="-5,-10,0,0" Value="{Binding TempCha, Mode=TwoWay}" Minimum="-50" Maximum="50" Increment="1" Grid.Column="4" Grid.Row="6" Visual="Material" VerticalOptions="Center" ValueChanged="SaveChanges"/>
+
                             </Grid>
                         </StackLayout>
                     </material:MaterialCard>

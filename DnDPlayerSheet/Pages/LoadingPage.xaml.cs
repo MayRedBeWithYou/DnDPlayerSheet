@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace DnDPlayerSheet.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AttributesPage : ContentPage
+    public partial class LoadingPage : ContentPage
     {
-        public AttributesPage()
+        public LoadingPage()
         {
             InitializeComponent();
         }

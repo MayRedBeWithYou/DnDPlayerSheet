@@ -31,7 +31,18 @@ namespace DnDPlayerSheet.Pages
         private void CurrentPWChanged(object sender, EventArgs e)
         {
             var stepper = sender as Stepper;
-            CurrentPWLabel.Text = stepper.Value.ToString() + " /";
+            CurrentPWLabel.Text = stepper.Value.ToString();
+            App.PlayerController.SelectedCharacter.SaveToFile();
+        }
+
+        private void SaveChanges(object sender, ValueChangedEventArgs e)
+        {
+            App.PlayerController.SelectedCharacter.SaveToFile();
+        }
+
+        private void Editor_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            App.PlayerController.SelectedCharacter.SaveToFile();
         }
     }
 }

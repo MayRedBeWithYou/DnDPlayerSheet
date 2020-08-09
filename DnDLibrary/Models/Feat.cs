@@ -17,9 +17,12 @@ namespace DnDPlayerSheet.Models
         public string Type { get; set; }
 
         [Display(Name = "Wymagania")]
-        public string Requirements { get; set; }
+        public string Requirements { get; set; }        
 
         [Display(Name = "Opis"), DataType(DataType.MultilineText)]
         public string Description { get; set; }
+
+        [Display(Name = "Zasady specjalne"), DataType(DataType.MultilineText)]
+        public string SpecialRules { get; set; }
     }
 }

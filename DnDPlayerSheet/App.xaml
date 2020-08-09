@@ -15,5 +15,7 @@
         </OnPlatform>
         <xaml:EnumToStringConverter x:Key="EnumToStringConverter" />
         <xaml:AttributeToModifierConverter x:Key="AttributeToModifierConverter" />
+        <xaml:PositiveNegativeColoringConverter x:Key="PositiveNegativeColoringConverter" />
+        <xaml:NegativeColoringConverter x:Key="NegativeColoringConverter" />
     </Application.Resources>
 </Application>

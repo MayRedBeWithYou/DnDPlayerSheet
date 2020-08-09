@@ -4,12 +4,28 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:DnDPlayerSheet"
+             xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material" 
+             xmlns:xaml="clr-namespace:DnDPlayerSheet.XamlExtensions"
              x:Class="DnDPlayerSheet.Pages.SpellsPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Zaklęcia"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <material:MaterialCard BindingContext="{x:Static local:App.PlayerController}">
+                <StackLayout BindingContext="{Binding SelectedCharacter}">
+                    <Label Text="Moje zaklęcia"/>
+                    <ListView ItemsSource="{Binding Spells, Mode=TwoWay}" SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout>
+                                        <Label Text="{Binding Name}"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </material:MaterialCard>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

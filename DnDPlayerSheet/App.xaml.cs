@@ -1,4 +1,5 @@
 ﻿using DnDPlayerSheet.Controllers;
+using DnDPlayerSheet.Pages;
 using System;
 using System.IO;
 using Xamarin.Forms;
@@ -8,18 +9,23 @@ namespace DnDPlayerSheet
 {
     public partial class App : Application
     {
+        public static IDataProvider DataProvider { get; } = new LocalDataProvider();
+
         public static PlayerController PlayerController { get; } = new PlayerController();
 
         public App()
         {
             InitializeComponent();
             XF.Material.Forms.Material.Init(this);
-
-            MainPage = new Main();
+            MainPage = new LoadingPage();
         }
 
-        protected override void OnStart()
+        protected override async void OnStart()
         {
+            await DataProvider.InitializeAsync();
+            await PlayerController.InitCharacters();
+
+            MainPage = new Main();
         }
 
         protected override void OnSleep()

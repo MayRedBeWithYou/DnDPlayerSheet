@@ -15,11 +15,11 @@
             <FontImageSource FontFamily="{DynamicResource MaterialFontFamily}" Glyph="{x:Static local:IconFont.Account}" Size="56" />
         </views:OverviewPage.IconImageSource>
     </views:OverviewPage>
-    <views:AttributesPage Title="Atrybuty">
-        <views:AttributesPage.IconImageSource>
+    <views:SkillsPage Title="Umiejętności">
+        <views:SkillsPage.IconImageSource>
             <FontImageSource FontFamily="{DynamicResource MaterialFontFamily}" Glyph="{x:Static local:IconFont.ArmFlex}" Size="56" />
-        </views:AttributesPage.IconImageSource>
-    </views:AttributesPage>
+        </views:SkillsPage.IconImageSource>
+    </views:SkillsPage>
     <views:SpellsPage Title="Zaklęcia">
         <views:SpellsPage.IconImageSource>
             <FontImageSource FontFamily="{DynamicResource MaterialFontFamily}" Glyph="{x:Static local:IconFont.Script}" Size="56" />
