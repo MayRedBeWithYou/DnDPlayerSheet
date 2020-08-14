@@ -1,0 +1,96 @@
+﻿@model DnDPlayerSheet.Models.Spell
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<h1>Szczegóły</h1>
+
+<div>
+    <h4>Zaklęcie</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.School)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.School)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tier)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tier)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Level)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Level)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Components)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Components)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CastTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CastTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Range)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Range)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Target)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Target)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SavingThrow)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SavingThrow)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SpellResistance)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SpellResistance)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MaterialComponent)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaterialComponent)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

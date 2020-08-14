@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:DnDPlayerSheet"
+             xmlns:models="clr-namespace:DnDPlayerSheet.Models"
+             xmlns:sfListView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:sfComboBox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
+             xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material" 
+             xmlns:xaml="clr-namespace:DnDPlayerSheet.XamlExtensions"
+             x:Class="DnDPlayerSheet.Pages.SpellBrowser">
+    <ContentPage.Content>
+        <StackLayout>
+            <material:MaterialCard>
+                <Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+					</Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="80"/>
+                    </Grid.ColumnDefinitions>
+                    <SearchBar Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" x:Name="SearchBar" Placeholder="Wpisz nazwę..." TextChanged="SearchBar_TextChanged"/>
+                    <Label VerticalOptions="Center" Grid.Column="0" Grid.Row="1" Text="Szkoła"/>
+                    <Picker VerticalOptions="FillAndExpand" x:Name="SchoolPicker" SelectedIndex="-1" Title="Wybierz szkołę..." SelectedIndexChanged="RefreshFilter" ItemsSource="{Binding ., Source={x:Static models:EnumLists.Schools}}" ItemDisplayBinding="{Binding .}" Grid.Column="1" Grid.Row="1"/>
+                    <material:MaterialButton Grid.Column="2" Grid.Row="1" Text="Reset" Clicked="ResetSchool"/>
+                    <Label VerticalOptions="Center" Grid.Column="0" Grid.Row="2" Text="Klasa"/>
+                    <Picker VerticalOptions="FillAndExpand" Grid.Column="1" Grid.Row="2" x:Name="RolePicker" SelectedIndex="-1" Title="Wybierz klasę..." SelectedIndexChanged="RefreshFilter" ItemsSource="{Binding ., Source={x:Static models:EnumLists.Roles}}" ItemDisplayBinding="{Binding .}"/>
+                    <material:MaterialButton Grid.Column="2" Grid.Row="2" Text="Reset" Clicked="ResetRole" />
+                </Grid>
+            </material:MaterialCard>
+            <material:MaterialCard>
+                <StackLayout>
+                    <sfListView:SfListView x:Name="SpellListView" ItemsSource="{Binding Spells, Mode=OneWay}" AllowGroupExpandCollapse="True" SelectionMode="None" ItemTapped="SpellListView_ItemTapped">
+                        <sfListView:SfListView.DataSource>
+                            <data:DataSource>
+                                <data:DataSource.GroupDescriptors>
+                                    <data:GroupDescriptor PropertyName="Tier"/>                                    
+                                </data:DataSource.GroupDescriptors>
+                            </data:DataSource>
+                        </sfListView:SfListView.DataSource>
+                        <sfListView:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label FontSize="Small" Text="{Binding Name}" Grid.Column="0"/>
+                                        <Button Text="+" BackgroundColor="#388E3C" Grid.Column="2" Clicked="AddSpell" Margin="2"/>
+
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </sfListView:SfListView.ItemTemplate>
+                        <sfListView:SfListView.GroupHeaderTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Label FontSize="Title" Text="{Binding Key, StringFormat='Zaklęcia poziomu {0}-ego'}"/>
+                                </ViewCell>
+                            </DataTemplate>
+                        </sfListView:SfListView.GroupHeaderTemplate>
+                    </sfListView:SfListView>
+                </StackLayout>
+            </material:MaterialCard>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
