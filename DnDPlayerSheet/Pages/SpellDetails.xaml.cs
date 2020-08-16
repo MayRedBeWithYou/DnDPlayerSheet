@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DnDPlayerSheet.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,14 +8,18 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace DnDPlayerSheet
+namespace DnDPlayerSheet.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Main : TabbedPage
+    public partial class SpellDetails : ContentPage
     {
-        public Main()
+        public Spell Spell { get; }
+
+        public SpellDetails(Spell spell)
         {
+            Spell = spell;
             InitializeComponent();
+            BindingContext = this;
         }
     }
 }

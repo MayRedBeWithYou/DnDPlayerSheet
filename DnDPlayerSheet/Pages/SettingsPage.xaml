@@ -15,6 +15,7 @@
                     <material:MaterialButton Text="Pobierz dane z serwera" Clicked="DownloadDataFromServer"/>
                     <material:MaterialButton Text="Ośwież zaklęcia postaci" Clicked="RefreshCharacterSpells"/>
                     <material:MaterialButton Text="Wyczyść postaci" Clicked="ClearCharacters"/>
+                    <Label Text="Made by Red - 2020" FontSize="Small" HorizontalTextAlignment="Center"/>
                 </StackLayout>
             </material:MaterialCard>
         </StackLayout>

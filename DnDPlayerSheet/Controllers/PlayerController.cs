@@ -48,32 +48,31 @@ namespace DnDPlayerSheet.Controllers
             }
             if (Characters.Count == 0)
             {
-
                 Character startCharacter = new Character()
                 {
-                    Name = "Arius",
-                    Alignment = Alignment.ChaoticNeutral,
+                    Name = "Nowa postać",
+                    Alignment = Alignment.TrueNeutral,
                     MaxPW = 10,
-                    CurrentPW = 7,
-                    Race = "Tiefling",
-                    KP = 12,
+                    CurrentPW = 10,
+                    Race = "Człowiek",
+                    KP = 10,
                     Speed = 9,
-                    Touch = 12,
+                    Touch = 10,
                     Unprepared = 10,
-                    Strength = 8,
-                    Dexterity = 12,
-                    Constitution = 12,
-                    Intelligence = 14,
-                    Wisdom = 12,
-                    Charisma = 18,
-                    Fortitude = 1,
-                    Will = 4,
-                    Reflex = 1,
-                    Initiative = 1,
-                    MainNotes = "+1 do pisania kodu\n-69 do połączenia z Internetem"
+                    Strength = 10,
+                    Dexterity = 10,
+                    Constitution = 10,
+                    Intelligence = 10,
+                    Wisdom = 10,
+                    Charisma = 10,
+                    Fortitude = 0,
+                    Will = 0,
+                    Reflex = 0,
+                    Initiative = 0,
+                    MainNotes = "Miejsce na notatki!"
                 };
-                startCharacter.Classes = new ObservableCollection<ClassLevel>() { new ClassLevel() { Class = Role.Sorcerer, Level = 2 } };
-                startCharacter.SpellIds = new ObservableCollection<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+                startCharacter.Classes = new ObservableCollection<ClassLevel>() { new ClassLevel() { Class = Role.Sorcerer, Level = 1 } };
+                startCharacter.SpellIds = new ObservableCollection<int>() { };
                 startCharacter.SaveToFile();
                 Characters.Add(startCharacter);
                 SelectedCharacter = startCharacter;

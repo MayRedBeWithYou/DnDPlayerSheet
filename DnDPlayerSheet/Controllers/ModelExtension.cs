@@ -18,13 +18,13 @@ namespace DnDPlayerSheet.Controllers
         {
             string localPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string charactersPath = Path.Combine(localPath, "characters");
-            File.WriteAllText(Path.Combine(charactersPath, c.Name + ".json"), JsonConvert.SerializeObject(c));
+            File.WriteAllText(Path.Combine(charactersPath, "Player.json"), JsonConvert.SerializeObject(c));
         }
         public static void RemoveFile(this Character c)
         {
             string localPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string charactersPath = Path.Combine(localPath, "characters");
-            File.Delete(Path.Combine(charactersPath, c.Name + ".json"));
+            File.Delete(Path.Combine(charactersPath, "Player.json"));
         }
     }
 }

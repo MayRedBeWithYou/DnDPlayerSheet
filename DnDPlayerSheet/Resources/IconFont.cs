@@ -25,5 +25,7 @@ namespace DnDPlayerSheet
 		public const string MinusBox = "\U000f0375";
 		public const string TrashCan = "\U000f0a79";
 		public const string TrashCanOutline = "\U000f0a7a";
+		public const string ChevronDown = "\U000f0140";
+		public const string ChevronUp = "\U000f0143";
 	}
 }

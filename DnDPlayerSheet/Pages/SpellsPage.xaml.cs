@@ -23,6 +23,7 @@ namespace DnDPlayerSheet.Pages
         {
             Spell spell = (Spell)((Button)sender).BindingContext;
             App.PlayerController.SelectedCharacter.RemoveSpell(spell);
+            CrossToastPopUp.Current.ShowToastMessage($"Usunięto {spell.Name} z twoich zaklęć.");
         }
 
         private async void SeeAllSpells(object sender, EventArgs e)
@@ -32,9 +33,11 @@ namespace DnDPlayerSheet.Pages
             await Navigation.PushModalAsync(browser);
         }
 
-        private void SpellListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        private void SpellTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
-            CrossToastPopUp.Current.ShowToastMessage((e.ItemData as Spell).Name);
+            Spell spell = e.ItemData as Spell;
+            if (spell is null) return;
+            Navigation.PushModalAsync(new SpellDetails(spell));
         }
     }
 }

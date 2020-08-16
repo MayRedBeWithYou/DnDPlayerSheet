@@ -11,41 +11,65 @@
              xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
              xmlns:xaml="clr-namespace:DnDPlayerSheet.XamlExtensions"
              x:Class="DnDPlayerSheet.Pages.SpellsPage">
+    <ContentPage.Resources>
+        <xaml:SpellComparer x:Key="SpellComparer"/>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
             <material:MaterialCard BindingContext="{x:Static local:App.PlayerController}">
                 <StackLayout BindingContext="{Binding SelectedCharacter}">
-                    <sfListView:SfListView x:Name="SpellListView" ItemsSource="{Binding Spells, Mode=OneWay}" SelectionMode="None" ItemTapped="SpellListView_ItemTapped">
+                    <Label Text="Moje zaklęcia" FontSize="Title" Margin="10,0,0,0"/>
+                    <sfListView:SfListView x:Name="SpellListView" ItemsSource="{Binding Spells, Mode=OneWay}" AllowGroupExpandCollapse="True"
+                                           IsStickyGroupHeader="True" SelectionMode="None" ItemTapped="SpellTapped" GroupHeaderSize="56">
                         <sfListView:SfListView.DataSource>
                             <data:DataSource>
+                                <data:DataSource.SortDescriptors>
+                                    <data:SortDescriptor>
+                                        <data:SortDescriptor.Comparer>
+                                            <xaml:SpellComparer/>
+                                        </data:SortDescriptor.Comparer>
+                                    </data:SortDescriptor>
+                                </data:DataSource.SortDescriptors>
                                 <data:DataSource.GroupDescriptors>
                                     <data:GroupDescriptor PropertyName="Tier"/>
                                 </data:DataSource.GroupDescriptors>
                             </data:DataSource>
                         </sfListView:SfListView.DataSource>
-                        <sfListView:SfListView.GroupHeaderTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Label FontSize="Title" Text="{Binding Key, StringFormat='Zaklęcia poziomu {0}-ego'}"/>
-                                </ViewCell>
-                            </DataTemplate>
-                        </sfListView:SfListView.GroupHeaderTemplate>
                         <sfListView:SfListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="5*"/>
+                                            <ColumnDefinition Width="2*"/>
                                             <ColumnDefinition Width="1*"/>
                                         </Grid.ColumnDefinitions>
-                                        <Label FontSize="Small" Text="{Binding Name}" Grid.Column="0"/>
-                                        <Button Text="-" BackgroundColor="#D32F2F" Grid.Column="2" Clicked="RemoveSpell" Margin="2"/>
-
+                                        <Label Padding="10,0,0,0" VerticalTextAlignment="Center" FontSize="Medium" Text="{Binding Name}"  Grid.Column="0"/>
+                                        <Button Text="{x:Static local:IconFont.Minus}" FontFamily="{DynamicResource MaterialFontFamily}" BackgroundColor="#7f0000" Grid.Column="2" Clicked="RemoveSpell" Margin="3"/>
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>
                         </sfListView:SfListView.ItemTemplate>
+                        <sfListView:SfListView.GroupHeaderTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid BackgroundColor="#707070">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="3"/>
+                                            <RowDefinition Height="1*" />
+                                            <RowDefinition Height="1" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="50"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Padding="10,0,0,0" Grid.Row="1" VerticalTextAlignment="Center" FontSize="Title" Text="{Binding Key, StringFormat='Zaklęcia poziomu {0}-ego'}"/>
+                                        <Frame Grid.Row="2" Grid.ColumnSpan="2" OutlineColor="Yellow" HasShadow="True" HeightRequest="1" VerticalOptions="Center"/>
+                                        <Label Grid.Column="1" TextColor="Black" Text="{Binding IsExpand, Mode=OneWay, Converter={x:StaticResource ChevronUpDownConverter}}" FontFamily="{DynamicResource MaterialFontFamily}" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </sfListView:SfListView.GroupHeaderTemplate>
                     </sfListView:SfListView>
                 </StackLayout>
             </material:MaterialCard>

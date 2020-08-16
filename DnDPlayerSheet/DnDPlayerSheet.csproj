@@ -6,6 +6,7 @@
     <Authors>RedSensei</Authors>
     <Company>RedSensei</Company>
     <UserSecretsId>eff893bd-e39c-4c82-b286-af2522c8b95a</UserSecretsId>
+    <Product>Asystent D&amp;D 3.5e</Product>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -24,6 +25,7 @@
     <PackageReference Include="Plugin.Toast" Version="2.1.2" />
     <PackageReference Include="RestSharp" Version="106.11.4" />
     <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
+    <PackageReference Include="Syncfusion.Xamarin.Expander" Version="18.2.0.48" />
     <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="18.2.0.48" />
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.2.0.48" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.2.0.48" />
@@ -76,7 +78,13 @@
     <EmbeddedResource Update="Pages\SpellBrowser.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Pages\SpellDetails.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\SpellsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Default.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

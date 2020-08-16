@@ -1,6 +1,7 @@
 ﻿using DnDLibrary.Models;
 using DnDPlayerSheet.Controllers;
 using DnDPlayerSheet.XamlExtensions;
+using Plugin.Toast;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -28,6 +29,7 @@ namespace DnDPlayerSheet.Pages
         private void GoToEdit(object sender, EventArgs e)
         {
             //Navigation.PushModalAsync(new EditCharacterPage());
+            CrossToastPopUp.Current.ShowToastMessage("Pozostałość po edit mode, wywalę soon");
         }
 
         private void AlignmentChanged(object sender, EventArgs e)

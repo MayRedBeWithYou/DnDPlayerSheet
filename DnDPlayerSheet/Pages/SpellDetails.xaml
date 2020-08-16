@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:DnDPlayerSheet"
+             xmlns:models="clr-namespace:DnDPlayerSheet.Models"
+             xmlns:pages="clr-namespace:DnDPlayerSheet.Pages"
+             xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material" 
+             xmlns:xaml="clr-namespace:DnDPlayerSheet.XamlExtensions"
+             x:Class="DnDPlayerSheet.Pages.SpellDetails">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Fill" BindingContext="{Binding Spell, Mode=OneWay}">
+            <Label Text="{Binding Name, Mode=OneWay}" FontSize="Title" VerticalOptions="Start" Padding="15"/>
+            <ScrollView VerticalOptions="StartAndExpand" Padding="5,5,5,10">
+                <Grid VerticalOptions="StartAndExpand" Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Szkoła:" FontAttributes="Bold"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding School, Converter={x:StaticResource EnumToStringConverter}}"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="Poziom:" FontAttributes="Bold"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Level, Mode=OneWay}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="Komponenty:" FontAttributes="Bold"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding Components, Mode=OneWay}"/>
+
+                    <Label Grid.Row="3" Grid.Column="0" Text="Czas rzucania:" FontAttributes="Bold"/>
+                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding CastTime, Mode=OneWay}"/>
+
+                    <Label Grid.Row="4" Grid.Column="0" Text="Zasięg:" FontAttributes="Bold"/>
+                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding Range, Mode=OneWay}"/>
+
+                    <Label Grid.Row="5" Grid.Column="0" Text="Cele:" FontAttributes="Bold"/>
+                    <Label Grid.Row="5" Grid.Column="1" Text="{Binding Target, Mode=OneWay}"/>
+
+                    <Label Grid.Row="6" Grid.Column="0" Text="Czas działania:" FontAttributes="Bold"/>
+                    <Label Grid.Row="6" Grid.Column="1" Text="{Binding Duration, Mode=OneWay}"/>
+
+                    <Label Grid.Row="7" Grid.Column="0" Text="Rzut obronny:" FontAttributes="Bold"/>
+                    <Label Grid.Row="7" Grid.Column="1" Text="{Binding SavingThrow, Mode=OneWay}"/>
+
+                    <Label Grid.Row="8" Grid.Column="0" Text="Odporność na czary:" FontAttributes="Bold"/>
+                    <Label Grid.Row="8" Grid.Column="1" Text="{Binding SpellResistance, Mode=OneWay}"/>
+
+                    <Label Grid.Row="9" Grid.Column="0" Text="Komponent materialny:" FontAttributes="Bold" HeightRequest="40"/>
+                    <Label Grid.Row="9" Grid.Column="1" Text="{Binding MaterialComponent, Mode=OneWay}"/>
+
+                    <Label Grid.Row="10" Grid.Column="0" Text="Opis:" FontAttributes="Bold"/>
+                    <Label Grid.Row="10" Grid.Column="1" Text="{Binding Description, Mode=OneWay}"/>
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

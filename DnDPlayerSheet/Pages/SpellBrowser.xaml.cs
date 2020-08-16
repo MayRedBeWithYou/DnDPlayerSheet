@@ -51,10 +51,11 @@ namespace DnDPlayerSheet.Pages
             CrossToastPopUp.Current.ShowToastMessage("Dodano " + spell.Name + " do twoich zaklęć.");
         }
 
-        private void SpellListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        private void SpellTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             Spell spell = e.ItemData as Spell;
-            CrossToastPopUp.Current.ShowToastMessage(spell.Name);
+            if (spell is null) return;
+            Navigation.PushModalAsync(new SpellDetails(spell));
         }
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)

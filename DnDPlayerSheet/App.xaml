@@ -17,5 +17,7 @@
         <xaml:AttributeToModifierConverter x:Key="AttributeToModifierConverter" />
         <xaml:PositiveNegativeColoringConverter x:Key="PositiveNegativeColoringConverter" />
         <xaml:NegativeColoringConverter x:Key="NegativeColoringConverter" />
+        <xaml:NegativeBoolConverter x:Key="NegativeBoolConverter"/>
+        <xaml:ChevronUpDownConverter x:Key="ChevronUpDownConverter"/>
     </Application.Resources>
 </Application>
