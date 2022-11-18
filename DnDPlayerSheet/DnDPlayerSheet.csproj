@@ -23,7 +23,7 @@
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Plugin.Toast" Version="2.1.2" />
-    <PackageReference Include="RestSharp" Version="106.11.4" />
+    <PackageReference Include="RestSharp" Version="106.12.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
     <PackageReference Include="Syncfusion.Xamarin.Expander" Version="18.2.0.48" />
     <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="18.2.0.48" />
